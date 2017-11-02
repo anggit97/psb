@@ -79,6 +79,10 @@ switch ($getPage) {
         $idd                = $_GET['idd'];
         $_SESSION['active'] = "4";
         break;
+    case 9:
+        $page               = "include/pembayaran.php";
+        $_SESSION['active'] = "5";
+        break;
 	default:
 		$page 	= "include/home.php";
 		$_SESSION['active']	= "1";
@@ -104,10 +108,10 @@ switch ($getPage) {
     <div class="wrapper">
         <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
             <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+                Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
-        Tip 2: you can also add an image using data-image tag
-    -->
+                Tip 2: you can also add an image using data-image tag
+            -->
             <div class="logo">
                 <a href="http://www.anggitprayogo.com" class="simple-text">
                     Selamat datang <?php $role == "Admin" ? print($nama_admin) : print($nama_panggilan); ?>
@@ -155,16 +159,16 @@ switch ($getPage) {
                             <p>Syarat Pendaftaran</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./typography.html">
+                    <li class="<?php $_SESSION['active'] == 5 ? print("active") : print("") ?>">
+                        <a href="index.php?page=9">
                             <i class="material-icons">library_books</i>
-                            <p>Typography</p>
+                            <p>Pembayaran</p>
                         </a>
                     </li>
                     <li>
                         <a href="./icons.html">
                             <i class="material-icons">bubble_chart</i>
-                            <p>Icons</p>
+                            <p>Konfirmasi Pembayaran</p>
                         </a>
                     </li>
                     <li>
@@ -238,6 +242,7 @@ switch ($getPage) {
         </div>
     </div>
 </body>
+
 <!--   Core JS Files   -->
 <script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -251,17 +256,17 @@ switch ($getPage) {
 <!--  Notifications Plugin    -->
 <script src="../assets/js/bootstrap-notify.js"></script>
 <!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
 <!-- Material Dashboard javascript methods -->
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
 
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
-
+<script>
+    $(document).ready(function(){
+        $("#cetak").click(function(){
+            window.print();
+        });
     });
 </script>
 

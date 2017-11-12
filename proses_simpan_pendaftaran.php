@@ -30,11 +30,12 @@
 
 			$date_regis	= date("Y-m-d");
 
-			$query2		= "INSERT INTO detail_pendaftaran VALUES(null,$id,null, '$date_regis', 0)";
+			$query2		= "INSERT INTO detail_pendaftaran (id_user,tanggal_daftar,status_pendaftaran)
+							VALUES($id, '$date_regis', 0)";
 
 			$exec_detil	= mysqli_query($conn, $query2);
 
-			if ($exec_akun || $exec_detil) {
+			if ($exec_akun && $exec_detil) {
 				session_destroy();
 				echo'<script> window.location="success_register.php"; </script> ';
 			}else{

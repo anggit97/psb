@@ -25,13 +25,18 @@
 
                             // echo '<a href="../assets/uploads/kwitansi-pembayaran.jpeg" class="btn btn-primary btn-md pull-left" download><i class="fa fa-print"></i> Cetak biaya yang harus dibayar untuk pendaftaran</a>';
 
-                            echo '<a href="#" class="btn btn-primary btn-md pull-left" download data-toggle="modal" data-target="#myModal"><i class="fa fa-print"></i> Cetak biaya yang harus dibayar untuk pendaftaran</a>';
+                            // echo '<a href="#" class="btn btn-primary btn-md pull-left" download data-toggle="modal" data-target="#myModal"><i class="fa fa-print"></i> Cetak biaya yang harus dibayar untuk pendaftaran</a>';
 
-                            echo '<br><br>';
-                        }else{
+                            // echo '<br><br>';
+                        }else if ($daftar['status_pendaftaran'] == 2) {
                             echo "<div class='alert alert-warning alert-dismissable'>
                               <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                              <strong>Persyaratan sudah lengkap.</strong> Tunggu konfirmasi admin untuk tahap selanjutnya.
+                              <strong>Anda sudah melakukan pembayaran</strong> 
+                            </div>";
+                        }else if($daftar['status_pendaftaran'] == 0){
+                            echo "<div class='alert alert-warning alert-dismissable'>
+                              <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                              <strong>Persyaratan sudah lengkap. tunggu konfirmasi admin paling lambat 2 hari kerja</strong> 
                             </div>";
                         }
                     
@@ -80,7 +85,7 @@
                     </li>
                 </ol>
 
-                <h6><i><b>*Catatan : Pengembalian Formulir berikut persyaratannya paling lambar 2 minggu setelah pengisian formulir secara online</b></i></h6>
+                <h6><i><b>*Catatan : Tunggu konfirmasi admin paling lambat dua hari kerja untuk verifikasi file.</b></i></h6>
             </div>
         </div>
     </div>

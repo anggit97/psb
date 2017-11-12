@@ -61,7 +61,7 @@ if (isset($_SESSION['message'])) {
 										?></td>
 										<td>
 											<!-- <a href="" class="btn btn-primary btn-sm">Konfirmasi</a> -->
-											<a href="index.php?page=8&ida=<?php echo $rows['id_akun'] ?>&idd=<?php echo $rows['id_daftar'] ?>" class="btn btn-warning btn-sm">Konfirmasi</a>
+											<a href="include/proses_konfirmasi_pendaftaran.php?ida=<?php echo $rows['id_akun'] ?>&idd=<?php echo $rows['id_daftar'] ?>&idu=<?php echo $Id ?>" class="btn btn-warning btn-sm">Konfirmasi</a>
 										</td>
 									</tr>
 

@@ -83,6 +83,35 @@ switch ($getPage) {
         $page               = "include/pembayaran.php";
         $_SESSION['active'] = "5";
         break;
+    case 10:
+        $page               = "include/guru.php";
+        $_SESSION['active'] = 6;
+        break;
+    case 11:
+        $page               = "include/tambah_guru.php";
+        $_SESSION['active'] = 6;
+        break;
+    case 12:
+        $page               = "include/ubah_guru.php";
+        $_SESSION['active'] = 6;
+        $id                 = $_GET['id'];
+        break;
+    case 13:
+        $page               = "include/review_pembayaran_pendaftaran.php";
+        $_SESSION['active'] = '5';
+        break;
+    case 14:
+        $page               =  "include/konfirmasi_pembayaran_user.php";
+        $_SESSION['active'] = '7';
+        break;
+    case 15:
+        $page               =  "include/konfirmasi_pembayaran_pendaftaran.php";
+        $_SESSION['active'] = '7';
+        break;
+    case 16:
+        $page               = "include/konfirmasi_pembayaran_spp.php";
+        $_SESSION['active'] = '7';
+        break;
 	default:
 		$page 	= "include/home.php";
 		$_SESSION['active']	= "1";
@@ -149,10 +178,19 @@ switch ($getPage) {
                             <p>Konfirmasi Pendaftaran </p>
                         </a>
                     </li>
+                    <li class="<?php $_SESSION['active'] == 6 ? print("active") : print("") ?>">
+                        <a href="index.php?page=10">
+                            <i class="material-icons">supervisor_account</i>
+                            <p>Guru</p>
+                        </a>
+                    </li>
 					<?php
 					}
 					?>
-
+                    
+                    <?php  
+                    if ($role == "User") {
+                    ?>
                     <li class="<?php $_SESSION['active'] == 3 ? print("active") : print("") ?>">
                         <a href="index.php?page=4">
                             <i class="material-icons">content_paste</i>
@@ -165,12 +203,19 @@ switch ($getPage) {
                             <p>Pembayaran</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./icons.html">
-                            <i class="material-icons">bubble_chart</i>
+                    <li class="<?php $_SESSION['active'] == 7 ? print("active") : print("") ?>">
+                        <a href="index.php?page=14">
+                            <i class="material-icons">library_books</i>
                             <p>Konfirmasi Pembayaran</p>
                         </a>
                     </li>
+                    
+                    <?php
+                    }
+                    ?>
+
+                    
+                    
                     <li>
                         <a href="./maps.html">
                             <i class="material-icons">location_on</i>

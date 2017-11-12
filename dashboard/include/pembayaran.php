@@ -9,7 +9,7 @@ if($execx){
 
 }else{
     echo 'gagal';
-}
+}	
 
 ?>
 
@@ -93,14 +93,29 @@ if($execx){
 			if ($daftar['status_pendaftaran'] == 1) {
     
 			    // echo '<a href="../assets/uploads/kwitansi-pembayaran.jpeg" class="btn btn-primary btn-md pull-left" download><i class="fa fa-print"></i> Cetak biaya yang harus dibayar untuk pendaftaran</a>';
+				if ($daftar['metode_pembayaran_pendaftaran'] != "") {
+					echo '<a href="index.php?page=13&metode_pembayaran='.$daftar['metode_pembayaran_pendaftaran'].'&status=true" class="btn btn-primary btn-md pull-left"><i class="fa fa-print"></i> Cetak biaya yang harus dibayar untuk pendaftaran</a>';
+				}else{
+					echo '<a href="#" class="btn btn-primary btn-md pull-left" download data-toggle="modal" data-target="#myModal"><i class="fa fa-print"></i> Cetak biaya yang harus dibayar untuk pendaftaran</a>';	
+				}
 
-			    echo '<a href="#" class="btn btn-primary btn-md pull-left" download data-toggle="modal" data-target="#myModal"><i class="fa fa-print"></i> Cetak biaya yang harus dibayar untuk pendaftaran</a>';
+			    
 
 			    echo '<br><br>';
-			}else{
+			}else if ($daftar['status_pendaftaran'] == 2) {
+                            echo "<div class='alert alert-warning alert-dismissable'>
+                              <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                              <strong>Anda sudah melakukan pembayaran</strong> 
+                            </div>";
+            }else if($daftar['status_pendaftaran'] == 0){
+                echo "<div class='alert alert-warning alert-dismissable'>
+                  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                  <strong>Persyaratan sudah lengkap. tunggu konfirmasi admin paling lambat 2 hari kerja</strong> 
+                </div>";
+            }else{
 			    echo "<div class='alert alert-warning alert-dismissable'>
 			      <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-			      <strong>Persyaratan sudah lengkap.</strong> Tunggu konfirmasi admin untuk tahap selanjutnya.
+			      <strong>Pendaftaran anda belum dikonfirmasi oleh Admin.</strong> Tunggu konfirmasi admin untuk tahap selanjutnya.
 			    </div>";
 			}
 
@@ -126,18 +141,20 @@ if($execx){
           <h4 class="modal-title">Pilih Metode Pembayaran</h4>
         </div>
         <div class="modal-body">
+        <form action="index.php?page=13" method="get">
+        	<input type="hidden" name="page" value="13">
           <div class="form-group">
               <label for="">Metode Pembayaran</label>
               <select name="metode_pembayaran" class="form-group">
-                  <option value="" disabled selected>-- Pilih Metode Pembayaran</option>
                   <option value="0">Lunas</option>
                   <option value="1">Cicil (2x)</option>
               </select>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-check"></i>Pilih</button>
+          <button class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+          <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i>Pilih</button>
+          </form>
         </div>
       </div>
       

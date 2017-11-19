@@ -2,7 +2,9 @@
 	//start the session
 	session_start();
 
-	$redirect = "";
+    include 'koneksi/koneksi.php';
+
+    $redirect = "";
 
 	if (isset($_SESSION['is_data_student_exist'])) {
 		$redirect = "<script> window.location='daftar_syarat.php'; </script>";
@@ -14,23 +16,39 @@
 	//check if button next is clicked
 	if(isset($_POST['submit'])){
 
+
+
 		//set all name attr and value to created variable
 		foreach ($_POST as $key => $val) {
 			${$key} = $val;
 			$_SESSION[''.$key.''] = $val;
 		}
 
-        $cost = 10;
-        $hash = password_hash($password,PASSWORD_BCRYPT,["cost" => $cost]);
+        $query  =   "SELECT email FROM akun WHERE email='$email'";
 
-        $_SESSION['password'] = $hash;
+        $exac   = mysqli_query($conn, $query);
 
-		//check if session is not empty, then redirect to daftar_data_orangtua.php
-		if (!empty($_SESSION)) {
-			echo $redirect;
-			print_r($_SESSION);
-		}
-	}
+        if ($exac) {
+            $email_count = mysqli_num_rows($exac);
+            if ($email_count > 0) {
+                echo '<script>alert("Email sudah digunakan, silahkan gunakan email lain..")</script>';
+            }else{
+                $cost = 10;
+                $hash = password_hash($password,PASSWORD_BCRYPT,["cost" => $cost]);
+
+                $_SESSION['password'] = $hash;
+
+                //check if session is not empty, then redirect to daftar_data_orangtua.php
+                if (!empty($_SESSION)) {
+                    echo $redirect;
+                    print_r($_SESSION);
+                }
+            }
+        }else{
+            echo mysqli_error($conn);
+        }   
+	   
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

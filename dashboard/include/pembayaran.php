@@ -14,7 +14,7 @@ if($execx){
 ?>
 
 
-<div class="row">
+<div class="row"> 	
     <div class="col-sm-12 col-md-8 col-lg-10 col-lg-offset-1">
         <div class="card" style="margin-top: 50px">
             <div class="card-header" data-background-color="blue">

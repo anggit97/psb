@@ -12,6 +12,8 @@ if($execx){
 }	
 
 $idetail    =   $daftar['Id'];
+$kelas      =   $daftar['kelas'];
+$id_user    =   $daftar['id_user'];
 
 if (isset($_POST['upload'])) {
     $targetfolderBase   = "../assets/uploads/";
@@ -40,14 +42,32 @@ if (isset($_POST['upload'])) {
             if ($exec) {
 
                 if ($daftar['metode_pembayaran_pendaftaran'] == "L") {
+
+                    $budget =   0;
+
+                    
+
+                    if ($kelas == "A") {
+                        $budget =   880000;
+                    }elseif($kelas == "B"){
+                        $budget = 895000;
+                    }else{
+                        $budget = 0;
+                    }
+
                     $query2 =   "INSERT INTO cicilan_pendaftaran 
-                            VALUES(null, '$fileNameBukti', $idetail, 875000, '$tanggal_pembayaran', 1)";
+                            VALUES(null, '$fileNameBukti', $idetail, $budget, '$tanggal_pembayaran', 0,1)";
                     $exec2   =   mysqli_query($conn, $query2);
 
-                    if ($exec2) {
+                    $queryCicilanSPPPertama    =   "INSERT INTO pembayaran_spp VALUES(null, '$tanggal_pembayaran', 1, $id_user)";
+
+                    $execCicilanSPPPertama     = mysqli_query($conn, $queryCicilanSPPPertama);
+
+
+                    if ($exec2 && $execCicilanSPPPertama) {
                         echo "<div class='alert alert-success alert-dismissable'>
                           <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                          <strong>Berhasil!</strong> Upload Akte(PDF).
+                          <strong>Berhasil!</strong> Upload bukti pembayaran pendaftaran.
                         </div>";  
                     }else{
                         echo mysqli_error($conn);

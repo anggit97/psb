@@ -25,6 +25,15 @@ if ($execCicilan) {
 
 $nom	=	$nominal['nom'];
 
+
+$queryCicilanLast   =   "SELECT status_cicilan FROM cicilan_pendaftaran WHERE id_detail_pendaftaran=$idetail ORDER BY  Id DESC LIMIT 1";
+$execCicilanLast    =   mysqli_query($conn, $queryCicilanLast);
+
+if ($execCicilanLast) {
+    $row    =   mysqli_fetch_array($execCicilanLast);
+    $lastStatus =   $row['status_cicilan'];
+}
+
 ?>
 
 
@@ -49,7 +58,11 @@ $nom	=	$nominal['nom'];
         				
 
         				if ($nom >= 890000) {
-        					echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+                            if ($lastStatus == 0) {
+                                echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran</a>(Sedang dikonfirmasi Admin)</li> ';
+                            }else{
+                                echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+                            }
         				}else{
         					echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
         				}
@@ -57,11 +70,43 @@ $nom	=	$nominal['nom'];
 
         			<li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a></li>
         			<?php	
-        			}else{
-        			?>
-					<h3>Anda belum melengkapi pendaftaran atau belom dikonfirmasi oleh admin, klik  <a href="index.php?page=4">disini</a> untuk melengkapi atau melihat status daftar</h3>
-        			<?php
-        			}
+        			}else if($daftar['status_pendaftaran'] == 3){
+        			     
+                         
+                        if ($nom >= 890000) {
+                            if ($lastStatus == 0) {
+                                echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran</a> (Sedang dikonfirmasi Admin)</li> ';
+                            }else{
+                                echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+                            }
+                        }else{
+                            echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                        }
+
+                    ?>
+                        
+                        <li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a></li>
+        			
+                    <?php
+        			}else if($daftar['status_pendaftaran'] == 4){
+                        if ($nom >= 890000) {
+                            echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+                        }else{
+                            echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                        }
+
+                    ?>
+                        
+                        <li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a></li>
+
+                    <?php
+                    }else{
+                    ?>
+
+                    <h3>Anda belum melengkapi pendaftaran atau belom dikonfirmasi oleh admin, klik  <a href="index.php?page=4">disini</a> untuk melengkapi atau melihat status daftar</h3>
+                    
+                    <?php
+                    }
             		?>
             		
             	</ul>

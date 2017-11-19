@@ -55,6 +55,13 @@ if($execx){
 
 			if ($daftar['kelas'] == 'A') {
 			?>
+			
+				
+				<?php 
+
+				if ($metode_pembayaran == 0) {
+				?>
+
 				<ol>
 				<li><b>Kelas A : </b></li>
 				<table class="table table-responsive table-hove">
@@ -83,10 +90,54 @@ if($execx){
 						</tr>
 					</tbody>
 				</table>
+				<?php
+				}else{
+				?>
+
+				<ol>
+				<li><b>Kelas A CICILAN 1 : </b></li>
+				<table class="table table-responsive table-hove">
+					<thead>
+						<tr>
+							<th>Jenis Pengeluaran</th>
+							<th align="right">Biaya</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Uang pangkal gedung</td>
+							<td align="right">155.000</td>
+						</tr>
+						<tr>
+							<td>Uang Administrasi dan Seragam 5 Hari</td>
+							<td align="right">200.000</td>
+						</tr>
+						<tr>
+							<td>Uang pembayaran bulan 1 (pertama)</td>
+							<td align="right">85.000</td>
+						</tr>
+						<tr>
+							<td align="center"><b>Total</b></td>
+							<td align="right"><b>Rp.440.000</b></td>
+						</tr>
+					</tbody>
+				</table>
+				<?php
+				}
+				?>
+
+				
 			
 			<?php
 			}else{
 			?>
+
+				<?php 
+
+				if ($metode_pembayaran == 0) {
+				?>
+
+				<ol>
 				<li><b>Kelas B : </b></li>
 				<table class="table table-responsive table-hove">
 					<thead>
@@ -114,6 +165,42 @@ if($execx){
 						</tr>
 					</tbody>
 				</table>
+				<?php
+				}else{
+				?>
+
+				<ol>
+				<li><b>Kelas A CICILAN 1 : </b></li>
+				<table class="table table-responsive table-hove">
+					<thead>
+						<tr>
+							<th>Jenis Pengeluaran</th>
+							<th align="right">Biaya</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Uang pangkal gedung</td>
+							<td align="right">200.000</td>
+						</tr>
+						<tr>
+							<td>Uang Administrasi dan Seragam 5 Hari</td>
+							<td align="right">200.000</td>
+						</tr>
+						<tr>
+							<td>Uang pembayaran bulan 1 (pertama)</td>
+							<td align="right">100.000</td>
+						</tr>
+						<tr>
+							<td align="center"><b>Total</b></td>
+							<td align="right"><b>Rp.500.000</b></td>
+						</tr>
+					</tbody>
+				</table>
+				<?php
+				}
+				?>
+				
 			<?php
 			}
 

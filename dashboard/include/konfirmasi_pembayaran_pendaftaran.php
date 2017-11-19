@@ -73,7 +73,9 @@ if (isset($_POST['upload'])) {
                         echo mysqli_error($conn);
                     }
                 }else{
-                    echo $nominal            =   $_POST['nominal'];
+                    
+
+
                     $queryCountCicilan  =   "SELECT * FROM cicilan_pendaftaran WHERE id_detail_pendaftaran=$idetail";
                     $execCountCicilan   =   mysqli_query($conn, $queryCountCicilan);
 
@@ -82,10 +84,38 @@ if (isset($_POST['upload'])) {
 
                         ++$count;
 
+                        $nominal            =   0;
+
+                        if ($count >= 2) {
+                           
+                            if ($kelas == "A") {
+                                $nominal = 440000;
+                            }else if ($kelas == "B"){
+                                $nominal = 395000; 
+                            }else{
+                                $nominal = 0;
+                            }
+                        }else{
+                           if ($kelas == "A") {
+                                $nominal = 440000;
+                            }else if ($kelas == "B"){
+                                $nominal = 500000; 
+                            }else{
+                                $nominal = 0;
+                            } 
+                        }
+
+
                         $query2         =   "INSERT INTO cicilan_pendaftaran 
                                             (bukti_pembayaran, id_detail_pendaftaran, nominal, tanggal_pembayaran, cicilan_ke)
                                             VALUES('$fileNameBukti', $idetail, $nominal, '$tanggal_pembayaran',$count)";
                         $exec2          =   mysqli_query($conn, $query2);
+
+                        if ($count < 2) {
+                            $queryCicilanSPPPertama    =   "INSERT INTO pembayaran_spp VALUES(null, '$tanggal_pembayaran', 1, $id_user)";
+
+                            $execCicilanSPPPertama     = mysqli_query($conn, $queryCicilanSPPPertama);
+                        }
 
                         if ($exec2) {
                             echo "<div class='alert alert-success alert-dismissable'>
@@ -148,25 +178,7 @@ if (isset($_POST['upload'])) {
                     
                     </div>
                     
-                    <div class="row">
-                        <?php  
-                        if ($daftar['metode_pembayaran_pendaftaran'] == "C") {
-                        ?>
-                        
-                        <div class="form-group floating-label" style="margin-left: 30px;margin-right: 20px;">
-                            <label for="" class="col-sm-12">Nominal Cicilan</label>
-                            <input type="number" class="form-control" name="nominal" required="">
-                        </div>
-        
-                        <?php
-                        }else{
-                        ?>
-
-
-                        <?php
-                        }   
-                        ?>
-                    </div>
+                    
                     
                     <button type="submit" name="upload" class="btn btn-primary blue pull-right"><i class="fa fa-upload"></i> Upload File</button>
                 </form>
@@ -175,6 +187,5 @@ if (isset($_POST['upload'])) {
         </div>
     </div>
 </div>
-
 
 

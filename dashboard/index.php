@@ -226,24 +226,14 @@ switch ($getPage) {
 
                     
                     
-                    <li>
-                        <a href="./maps.html">
-                            <i class="material-icons">location_on</i>
-                            <p>Maps</p>
-                        </a>
-                    </li>
+                
                     <li>
                         <a href="../logout.php">
                             <i class="material-icons text-gray">notifications</i>
                             <p>Logout</p>
                         </a>
                     </li>
-                    <li class="active-pro">
-                        <a href="upgrade.html">
-                            <i class="material-icons">unarchive</i>
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li>
+                   
                 </ul>
             </div>
         </div>

@@ -18,7 +18,7 @@ if (isset($_SESSION['message'])) {
             </div>
             <div class="card-content">
                 
-                <h3 style="overflow: hidden;"><b>Data Siswa</b></h3>
+                <h3 style="overflow: hidden;"><b>Data Konfirmasi Pembayaran</b></h3>
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -32,7 +32,7 @@ if (isset($_SESSION['message'])) {
 					</thead>
 				    <tbody>
 				    	<?php  
-				    		$query 	= "SELECT a.Id,a.cicilan_ke, a.status_cicilan, c.email, d.nama FROM cicilan_pendaftaran a , detail_pendaftaran b, akun c, pendaftaran d WHERE a.id_detail_pendaftaran = b.Id AND a.status_cicilan = 0 AND c.id_user = d.Id AND b.id_user = d.Id ";
+				    		$query 	= "SELECT a.Id,a.cicilan_ke, a.status_cicilan, c.email, d.nama,b.Id idd FROM cicilan_pendaftaran a , detail_pendaftaran b, akun c, pendaftaran d WHERE a.id_detail_pendaftaran = b.Id AND a.status_cicilan = 0 AND c.id_user = d.Id AND b.id_user = d.Id ";
 
 				    		$exec 	=	mysqli_query($conn, $query);
 
@@ -59,14 +59,14 @@ if (isset($_SESSION['message'])) {
 										?></td>
 										<td>
 											<!-- <a href="" class="btn btn-primary btn-sm">Konfirmasi</a> -->
-											<a href="include/proses_konfirmasi_cicilan_pendaftaran.php?id=<?php echo $rows['Id'] ?>" class="btn btn-warning btn-sm">Konfirmasi</a>
+											<a href="include/proses_konfirmasi_cicilan_pendaftaran.php?id=<?php echo $rows['Id'] ?>&&idd=<?php echo $rows['idd'] ?>" class="btn btn-warning btn-sm">Konfirmasi</a>
 										</td>
 									</tr>
 
 				    	<?php
 				    				}
 				    			}else{
-				    				echo "<td colspan='5' align='center'><h3><b>Belum ada yang melakukan konfirmasi</b></h3></td>";
+				    				echo "<td colspan='5' align='center'><h3><b>Belum ada yang melakukan konfirmasi Pembayaran</b></h3></td>";
 				    			}
 				    		}else{
 				    			echo mysqli_error($conn);

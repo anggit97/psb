@@ -1,82 +1,45 @@
-<script type="text/javascript">
-<!--
-window.print();
-//-->
-</script>
-
 <?php  
-
+ob_start();
+include '../../assets/libs/fpdf/fpdf.php';
 include '../../koneksi/koneksi.php';
+include '../../assets/libs/fpdf/mc_table/mc_table.php';
 
-// require_once '../../assets/libs/dompdf/autoload.inc.php';
-// use Dompdf\Dompdf;
-// $dompdf = new Dompdf();
+$id_maintenance = $_GET['id_mnt'];
 
-// $html = '';
-// $dompdf->loadHtml($html);
-// $dompdf->setPaper('A4', 'landscape');
-// $dompdf->render();
-// $dompdf->stream("codexworld",array("Attachment"=>0));
+
+// Instanciation of inherited class
+$pdf = new PDF_MC_Table();
+$pdf->AliasNbPages();
+$pdf->AddPage();
+
+
+
+$pdf->Ln(15);
+$pdf->Cell(40,10,'',0,0,'L');
+$pdf->SetFont('TIMES','B',12);
+$pdf->Cell(100,10,'List Pendaftaran',1,1,'C');
+$pdf->Ln();
+$pdf->SetFont('TIMES','',10);
+$pdf->Cell(20,10,'No.',1,0,'C');
+$pdf->Cell(20,10,'Nama',1,0,'C');
+$pdf->Cell(30,10,'Email',1,0,'C');
+$pdf->Cell(20,10,'Usia',1,0,'C');
+$pdf->Cell(30,10,'Gender',1,0,'C');
+$pdf->Cell(40,10,'Solusi',1,0,'C');
+$pdf->Cell(30,10,'Kelas',1,1,'C');
+
+$query	=	"SELECT * FROM pendaftaran a, akun b, detail_pendaftaran c WHERE a.Id = c.id_user AND b.id_user = a.Id";
+$exec 	=	mysqli_query($conn, $query);
+
+$no = 0;
+
+$pdf->SetWidths(array(20,20,30,20,30,40,30));
+
+while ($rows = mysqli_fetch_array($exec)) {
+  $pdf->Row(array(++$no,$rows['nama'],$rows['email'],$rows['usia'],$rows['jenis_kelamin'],$rows['kelas'],$rows['tanggal_daftar']));
+}
+
+
+$pdf->Output();
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Test</title>
-	<?php include "libs_print.php"; ?>
-	
-	<style>
-		body{
-			background-color: #fff;
-		}
-	</style>
-</head>
-<body>
-	<center><h1>Laporan Pendaftaran</h1></center>
-	<table class="table table-responsive table-hover">
-		<tr>
-			<th><b>No</b></th>
-			<th><b>Nama</b></th>
-			<th><b>Email</b></th>
-			<th><b>Usia</b></th>
-			<th><b>Gender</b></th>
-			<th><b>Kelas</b></th>
-			<th><b>Tanggal Daftar</b></th>
-		</tr>
-		<tr>
-			<?php  
-			$query	=	"SELECT * FROM pendaftaran a, akun b, detail_pendaftaran c WHERE a.Id = c.id_user AND b.id_user = a.Id";
-			$exec 	=	mysqli_query($conn, $query);
-
-			if ($exec) {
-				if (mysqli_num_rows($exec) > 0) {
-					$i = 0;
-					while ($rows = mysqli_fetch_array($exec)) {
-			?>
-		
-			
-					<td><?php echo ++$i; ?></td>
-					<td><?php echo $rows['nama'] ?></td>
-					<td><?php echo $rows['email'] ?></td>
-					<td><?php echo $rows['usia'] ?></td>
-					<td><?php echo $rows['jenis_kelamin'] ?></td>
-					<td><?php echo $rows['kelas'] ?></td>
-					<td><?php echo $rows['tanggal_daftar'] ?></td>
-			
-				
-			<?php
-					}
-				}else{
-			?>
-				<h1>Kosong</h1>
-			<?php
-				}
-			}
-			?>
-			
-		</tr>
-	</table>
-</body>
-</html>

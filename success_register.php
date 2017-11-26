@@ -33,6 +33,7 @@
                     </div>
                     <div class="card-content">
                         <h3><font color="#2ecc71">Selamat! anda berhasil melakukan pendaftaran <i class="fa fa-check"></font></i></h3>
+                        <h4><font color="#e74c3c">Silahkan lalukan login dengan email dan password anda untuk melengkapi persyaratan pendaftaran.</font></h4>
                         <a href="login.php" class="btn btn-primary btn-lg pull-right">Login</a>
                     </div>
                 </div>

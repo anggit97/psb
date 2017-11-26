@@ -48,7 +48,9 @@ if($execx){
             </div>
             <div class="card-content">
             
-            <h4>Anda masuk kedalam kelas <?php echo "<b>".$daftar['kelas']."</b>"; ?> dengan metode pembayaran 
+
+
+            <h4><b><?php echo $nama; ?></b>, Anda masuk kedalam kelas <?php echo "<b>".$daftar['kelas']."</b>"; ?> dengan metode pembayaran 
             	<?php $metode_pembayaran == 0 ? print("<b><i>LUNAS</i></b>") : print("<b><i>CICILAN</i></b>"); ?>:</h4>
 			
 			<?php  
@@ -231,7 +233,8 @@ if($execx){
 			// }
 
 			?>
-                
+            
+            <h5 align="right">Tanggal Cetak	:	<b><?php echo date("Y-m-d"); ?></b></h5>
 			
 			<button class="btn btn-primary btn-md pull-right" id="cetak"><i class="fa fa-print"></i>&nbsp; Cetak</button>	
 

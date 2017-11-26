@@ -2,6 +2,34 @@
 
 <?php  
 
+    $query="select * from guru order by nip desc limit 1";
+    $baris=mysqli_query($conn,$query);
+    if($baris){
+      if(mysqli_num_rows($baris)>0){
+        $auto=mysqli_fetch_array($baris);
+        $kode=$auto['nip'];
+        $baru=substr($kode,3,7);
+          //$nilai=$baru+1;
+          $nol=(int)$baru;
+      } 
+      else{
+        $nol=0;
+        }
+      $nol=$nol+1;
+      $nol2="";
+      $nilai=4-strlen($nol);
+      for ($i=1;$i<=$nilai;$i++){
+        $nol2= $nol2."0";
+        }
+
+        $kode2 ="117".$nol2.$nol;
+        
+    }
+    else{
+    echo mysqli_error();
+    }
+ 
+
 if (isset($_POST['submit'])) {
 	
 	$_SESSION['message'] = "";
@@ -69,7 +97,7 @@ if (isset($_POST['submit'])) {
 				<form action="" method="post">
 					<div class="form-group">
 						<label for="nip">NIP</label>
-						<input type="text" class="form-control" name="nip" value="<?php isset($_SESSION['nip'])  ?  print($_SESSION['nip']) : ""; ?>">
+						<input type="text" class="form-control" readonly="readonly" name="nip" value="<?php echo $kode2 ?>">
 					</div>
 
 					<div class="form-group floating-label">

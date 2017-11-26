@@ -30,7 +30,7 @@ if (isset($_POST['upload'])) {
 
 
 
-    if ($file_type=="image/jpeg" || $file_type=="image/png") {
+    if ($file_type=="image/jpeg" || $file_type=="image/png" || $file_type=="application/pdf") {
         if(move_uploaded_file($_FILES['bukti']['tmp_name'], $targetfolder))
 
          {
@@ -143,7 +143,7 @@ if (isset($_POST['upload'])) {
     }else{
          echo "<div class='alert alert-danger alert-dismissable'>
           <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-          <strong>Gagal!</strong> Format tidak sesuai. harus format PNG atau JPEG.
+          <strong>Gagal!</strong> Format tidak sesuai. harus format PNG/JPEG/PDF.
         </div>";
     }
 }
@@ -156,7 +156,7 @@ if (isset($_POST['upload'])) {
         <div class="card" style="margin-top: 50px">
             <div class="card-header" data-background-color="blue">
                 <h4 class="title">Kofirmasi Pembayaran Pendaftaran</h4>
-                <p class="category">Upload bukti pembayaran dalam format yang ditentukan (PNG/JPEG)</p>
+                <p class="category">Upload bukti pembayaran dalam format yang ditentukan (PNG/JPEG/PDF)</p>
             </div>
             <div class="card-content">
             	
@@ -165,11 +165,11 @@ if (isset($_POST['upload'])) {
                         
 
                         <div class="form-group floating-label" style="margin-left: 20px;">
-                            <label class="col-sm-12">Bukti Pembayaran/Struk Transfer (PNG/JPEG) : </label>
+                            <label class="col-sm-12">Bukti Pembayaran/Struk Transfer (PNG/JPEG/PDF) : </label>
                             <label class="btn btn-primary" for="my-file-selector">
                                 <input id="my-file-selector" name="bukti" type="file" style="display:none" 
                                 onchange="$('#upload-file-info').html(this.files[0].name)">
-                                upload bukti pembayaran (.PDF)
+                                upload bukti pembayaran (PNG/JPEG/PDF)
                             </label>
                             <span class='label label-info' id="upload-file-info"></span>
                         </div>

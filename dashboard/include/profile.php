@@ -101,6 +101,3 @@
     </tbody>
 </table>
 
-<hr>
-<h3>Anda yakin data diatas benar?</h3>
-<a href="proses_simpan_pendaftaran.php" class="btn btn-primary pull-right"><i class="fa fa-pencil"></i>  Edit Biodata</a>

@@ -35,7 +35,11 @@ if (isset($_SESSION['message'])) {
 				    				FROM pendaftaran a, akun b, detail_pendaftaran c 
 						    		WHERE a.id=b.id_user 
 						    		AND b.role_user=1 
-						    		AND c.id_user = a.id";
+						    		AND c.id_user = a.id
+                    				AND a.upload_akte != '' 
+                    				AND a.upload_kartu_keluarga != '' 
+                    				AND a.foto_anak != '' 
+                    				AND a.foto_keluarga != ''";
 
 				    		$exec 	=	mysqli_query($conn, $query);
 

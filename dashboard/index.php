@@ -116,6 +116,36 @@ switch ($getPage) {
         $page               = "include/konfirmasi_pembayaran_pendaftaran_admin.php";
         $_SESSION['active'] = '8';
         break;
+    case 18:
+        $page               = "include/laporan.php";
+        $_SESSION['active'] = "9";
+        break;
+    case 19:
+        $page               = "include/mapel.php";
+        $_SESSION['active'] = "10";
+        break;
+    case 20:
+        $page               = "include/tambah_mapel.php";
+        $_SESSION['active'] = "10";
+        break;
+    case 21:
+        $page               = "include/ubah_mapel.php";
+        $_SESSION['active'] = "10";
+        $id                 = $_GET['id'];
+        break;
+    case 22:
+        $page               = "include/jadwal.php";
+        $_SESSION['active'] = "11";
+        break;
+    case 23:
+        $page               = "include/tambah_jadwal.php";
+        $_SESSION['active'] = "11";
+        $kelas              = $_GET['kelas'];
+        break;
+    case 24:
+        $page               = "include/jadwal_user.php";
+        $_SESSION['active'] = "12";        
+        break;
 	default:
 		$page 	= "include/home.php";
 		$_SESSION['active']	= "1";
@@ -194,6 +224,24 @@ switch ($getPage) {
                             <p>Konfirmasi Pembayaran Pendaftaran</p>
                         </a>
                     </li>
+                    <li class="<?php $_SESSION['active'] == 9 ? print("active") : print("") ?>">
+                        <a href="index.php?page=18">
+                            <i class="material-icons">subject</i>
+                            <p>Laporan</p>
+                        </a>
+                    </li>
+                    <li class="<?php $_SESSION['active'] == 10 ? print("active") : print("") ?>">
+                        <a href="index.php?page=19">
+                            <i class="material-icons">subject</i>
+                            <p>Mata Pelajaran</p>
+                        </a>
+                    </li>
+                    <li class="<?php $_SESSION['active'] == 11 ? print("active") : print("") ?>">
+                        <a href="index.php?page=22">
+                            <i class="material-icons">subject</i>
+                            <p>Jadwal</p>
+                        </a>
+                    </li>
 					<?php
 					}
 					?>
@@ -219,6 +267,13 @@ switch ($getPage) {
                             <p>Konfirmasi Pembayaran</p>
                         </a>
                     </li>
+                    <li class="<?php $_SESSION['active'] == 12 ? print("active") : print("") ?>">
+                        <a href="index.php?page=24">
+                            <i class="material-icons">library_books</i>
+                            <p>Jadwal</p>
+                        </a>
+                    </li>
+                    
                     
                     <?php
                     }

@@ -34,6 +34,9 @@ if ($execCicilanLast) {
     $lastStatus =   $row['status_cicilan'];
 }
 
+$kelas              =   $daftar['kelas'];
+$metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
+
 ?>
 
 
@@ -41,7 +44,7 @@ if ($execCicilanLast) {
     <div class="col-sm-12 col-md-8 col-lg-10 col-lg-offset-1">
         <div class="card" style="margin-top: 50px">
             <div class="card-header" data-background-color="blue">
-                <h4 class="title">Kofirmasi Pembayaran</h4>
+                <h4 class="title">Kofirmasi Pembayaran s</h4>
                 <p class="category">Daftar konfirmasi pembayaran</p>
             </div>
             <div class="card-content">
@@ -52,36 +55,78 @@ if ($execCicilanLast) {
         			if ($daftar['status_pendaftaran'] == 1) {
         			?>
 					<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>
-					<li><a href="#" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a></li>
+				
         			<?php
         			}elseif ($daftar['status_pendaftaran'] == 2) {
         				
+                        if ($kelas == "A") {
 
-        				if ($nom >= 890000) {
-                            if ($lastStatus == 0) {
-                                echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran</a>(Sedang dikonfirmasi Admin)</li> ';
+                            if ($nom >= 880000) {
+                                if ($lastStatus == 0) {
+                                    echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran</a>(Sedang dikonfirmasi Admin)</li> ';
+                                }else{
+                                    echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+                                }
                             }else{
-                                echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+                                if ($laststatus == 0) {
+                                    echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran</a>(sedang di konfirmasi admin)</li>';    
+                                }else{
+                                    echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                                }
+                                
                             }
-        				}else{
-        					echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
-        				}
+                            
+
+                        }else{
+                            if ($nom >= 890000) {
+                                if ($lastStatus == 0) {
+                                    echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran</a>(Sedang dikonfirmasi Admin)</li> ';
+                                }else{
+                                    echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+                                }
+                            }else{
+                                echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                            }
+                        }
+
+        				
         			?>
 
-        			<li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a></li>
+        			
         			<?php	
         			}else if($daftar['status_pendaftaran'] == 3){
         			     
-                         
-                        if ($nom >= 890000) {
-                            if ($lastStatus == 0) {
-                                echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran</a> (Sedang dikonfirmasi Admin)</li> ';
+                         if ($kelas == 'A') {
+                             if ($nom >= 880000) {
+                                if ($lastStatus == 0) {
+                                    echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran</a> (Sedang dikonfirmasi Admin)</li> ';
+                                }else{
+                                    echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+                                }
                             }else{
-                                echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+                                if ($nom >= 890000) {
+                                    if ($lastStatus == 0) {
+                                        echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran</a>(Sedang dikonfirmasi Admin)</li> ';
+                                    }else{
+                                        echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+                                    }
+                                }else{
+                                    echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                                }
                             }
-                        }else{
-                            echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
-                        }
+                         }else{
+                            if ($nom >= 890000) {
+                                if ($lastStatus == 0) {
+                                    echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran</a> (Sedang dikonfirmasi Admin)</li> ';
+                                }else{
+                                    echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+                                }
+                            }else{
+                                echo '<li><a href="" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                            }
+                         }
+                         
+                        
 
                     ?>
                         
@@ -89,11 +134,22 @@ if ($execCicilanLast) {
         			
                     <?php
         			}else if($daftar['status_pendaftaran'] == 4){
-                        if ($nom >= 890000) {
-                            echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+
+                        if ($kelas == 'A') {
+                            if ($nom >= 880000) {
+                                echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+                            }else{
+                                echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                            }
                         }else{
-                            echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                            if ($nom >= 890000) {
+                                echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+                            }else{
+                                echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                            }
                         }
+
+                        
 
                     ?>
                         

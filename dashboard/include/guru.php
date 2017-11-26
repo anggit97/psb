@@ -23,7 +23,7 @@ if (isset($_SESSION['message'])) {
 					<thead>
 						<tr>
 							<td><b>No</b></td>
-							<td><b>NIK</b></td>
+							<td><b>NIP</b></td>
 							<td><b>Nama Guru</b></td>
 							<td><b>Telp</b></td>
 							<td><b>Alamat</b></td>
@@ -50,8 +50,8 @@ if (isset($_SESSION['message'])) {
 											<td><?php echo ++$no; ?></td>
 											<td><?php echo $rows['nip'] ?></td>
 											<td><?php echo $rows['nama_guru'] ?></td>
-											<td><?php echo $rows['alamat'] ?></td>
 											<td><?php echo $rows['telp'] ?></td>
+											<td><?php echo $rows['alamat'] ?></td>
 											<td>
 												<a href="index.php?page=12&id=<?php echo $rows['Id'] ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
 												<a href="include/hapus_guru.php?id=<?php echo $rows['Id'] ?>" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></a>

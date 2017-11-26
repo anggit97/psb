@@ -34,6 +34,7 @@ if ($execCicilanLast) {
     $lastStatus =   $row['status_cicilan'];
 }
 
+
 $kelas              =   $daftar['kelas'];
 $metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
 

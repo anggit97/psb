@@ -77,7 +77,7 @@ if (isset($_GET['id'])) {
 		$execStatusPendaftaran	=	mysqli_query($conn, $queryDetailPendaftaran);
 
 		//Query untuk insert data ke dalam table siswa setelah melakukan pembayaran pertama
-		$queryNis	=	"INSERT INTO siswa VALUES('$kode2', '$nama', $idd, '$kelas')";
+		$queryNis	=	"INSERT INTO siswa VALUES('$kode2','$kelas' , $idd, ,'$nama')";
 		$exacNis 	=	mysqli_query($conn, $queryNis);
 
 		if (!$exacNis) {
@@ -117,9 +117,11 @@ if (isset($_GET['id'])) {
 				$execStatusPendaftaran	=	mysqli_query($conn, $queryDetailPendaftaran);
 			}
 
-			if ($totalRowCicilan < 1) {
+			echo $totalRowCicilan;
+
+			if ($totalRowCicilan <= 1) {
 				//Query untuk insert data ke dalam table siswa setelah melakukan pembayaran pertama
-				$queryNis	=	"INSERT INTO siswa VALUES('$kode2', '$nama', $idd, '$kelas')";
+				$queryNis	=	"INSERT INTO siswa VALUES('$kode2','$kelas' , $idd, ,'$nama')";
 				$exacNis 	=	mysqli_query($conn, $queryNis);
 				if (!$exacNis) {
 					echo mysqli_error($conn);
@@ -136,9 +138,11 @@ if (isset($_GET['id'])) {
 				$execStatusPendaftaran	=	mysqli_query($conn, $queryDetailPendaftaran);
 			}
 
-			if ($totalRowCicilan < 1) {
+			echo 'kelas B';
+
+			if ($totalRowCicilan <= 1) {
 				//Query untuk insert data ke dalam table siswa setelah melakukan pembayaran pertama
-				$queryNis	=	"INSERT INTO siswa VALUES('$kode2', '$nama', $idd, '$kelas')";
+				$queryNis	=	"INSERT INTO siswa VALUES('$kode2','$kelas' , $idd, ,'$nama')";
 				$exacNis 	=	mysqli_query($conn, $queryNis);
 				if (!$exacNis) {
 					echo mysqli_error($conn);

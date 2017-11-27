@@ -1,4 +1,9 @@
-<h2>Rincian Pembayaran Pendaftaran</h2>
+
+
+
+<center><h2>Rincian Pembayaran Pendaftaran</h2></center>
+<center><h3><b>TK RA Nurul Huda</b></h3></center>
+<center>______________________________________________________________________________________________</center>
 
 <?php  
 

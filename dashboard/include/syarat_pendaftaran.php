@@ -55,8 +55,10 @@
 
                                 if ($daftar['status_pendaftaran'] == 1) {
                                     echo '<font color="#2ecc71">Fotocopy Akte kelahiran dan kartu keluarga 2 lembar<i class="fa fa-check"></i></font>';
+                                }else if($daftar['status_pendaftaran'] >= 2){
+                                    echo '<font color="#2ecc71">Fotocopy Akte kelahiran dan kartu keluarga 2 lembar<i class="fa fa-check"></i></font>';
                                 }else{
-                                    echo '<font color="#2ecc71">Fotocopy Akte kelahiran dan kartu keluarga 2 lembar<i class="fa fa-check"></i></font> <a href="index.php?page=5" class="btn btn-primary btn-sm" title="Upload Akte Kelahiran dan Kartu Keluarga"><i class="fa fa-pencil"></i></a>';
+                                  echo '<font color="#2ecc71">Fotocopy Akte kelahiran dan kartu keluarga 2 lembar<i class="fa fa-check"></i></font> <a href="index.php?page=5" class="btn btn-primary btn-sm" title="Upload Akte Kelahiran dan Kartu Keluarga"><i class="fa fa-pencil"></i></a>';
                                 }
 
                                 
@@ -72,6 +74,8 @@
                             if ($foto_anak != "" && $foto_keluarga != "") {
 
                                 if ($daftar['status_pendaftaran'] == 1) {
+                                    echo '<font color="#2ecc71">Foto anak dan foto keluarga ukuran 2R<i class="fa fa-check"></i></font>';
+                                }else if($daftar['status_pendaftaran'] >= 2){
                                     echo '<font color="#2ecc71">Foto anak dan foto keluarga ukuran 2R<i class="fa fa-check"></i></font>';
                                 }else{
                                     echo '<font color="#2ecc71">Foto anak dan foto keluarga ukuran 2R<i class="fa fa-check"></i></font> <a href="index.php?page=6" class="btn btn-primary btn-sm" title="Upload Akte Kelahiran dan Kartu Keluarga"><i class="fa fa-pencil"></i></a>';

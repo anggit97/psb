@@ -89,7 +89,6 @@ if($execx){
 			</ol>
 					
 			<?php  
-
 			if ($daftar['status_pendaftaran'] == 1) {
     
 			    // echo '<a href="../assets/uploads/kwitansi-pembayaran.jpeg" class="btn btn-primary btn-md pull-left" download><i class="fa fa-print"></i> Cetak biaya yang harus dibayar untuk pendaftaran</a>';
@@ -112,8 +111,18 @@ if($execx){
                   <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
                   <strong>Persyaratan sudah lengkap. tunggu konfirmasi admin paling lambat 2 hari kerja</strong> 
                 </div>";
-            }else{
+            }else if ($daftar['status_pendaftara'] == 4){
 			    echo "<div class='alert alert-warning alert-dismissable'>
+			      <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+			      <strong>Pembayaran Pendaftaran sudah Lunas</strong>
+			    </div>";
+			}else if($daftar['status_pendaftaran'] == 3){
+				echo "<div class='alert alert-warning alert-dismissable'>
+			      <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+			      <strong>Pembayaran Pendaftaran Lunas di Cicilan ke -1</strong>
+			    </div>";
+			}else {
+				echo "<div class='alert alert-warning alert-dismissable'>
 			      <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
 			      <strong>Pendaftaran anda belum dikonfirmasi oleh Admin.</strong> Tunggu konfirmasi admin untuk tahap selanjutnya.
 			    </div>";

@@ -59,7 +59,7 @@ if (isset($_POST['upload'])) {
                             VALUES(null, '$fileNameBukti', $idetail, $budget, '$tanggal_pembayaran', 0,1)";
                     $exec2   =   mysqli_query($conn, $query2);
 
-                    $queryCicilanSPPPertama    =   "INSERT INTO pembayaran_spp VALUES(null, '$tanggal_pembayaran', 1, $id_user)";
+                    $queryCicilanSPPPertama    =   "INSERT INTO pembayaran_spp VALUES(null, '$tanggal_pembayaran', 1, 1, $id_user)";
 
                     $execCicilanSPPPertama     = mysqli_query($conn, $queryCicilanSPPPertama);
 
@@ -112,7 +112,7 @@ if (isset($_POST['upload'])) {
                         $exec2          =   mysqli_query($conn, $query2);
 
                         if ($count < 2) {
-                            $queryCicilanSPPPertama    =   "INSERT INTO pembayaran_spp VALUES(null, '$tanggal_pembayaran', 1, $id_user)";
+                            $queryCicilanSPPPertama    =   "INSERT INTO pembayaran_spp VALUES(null, '$tanggal_pembayaran', 1, 1, $id_user)";
 
                             $execCicilanSPPPertama     = mysqli_query($conn, $queryCicilanSPPPertama);
                         }

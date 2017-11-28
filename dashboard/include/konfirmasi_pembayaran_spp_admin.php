@@ -4,7 +4,7 @@
 if (isset($_SESSION['message'])) {
     echo "<div class='alert alert-success alert-dismissable'>
       <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-      <strong>Berhasil!</strong> Konfirmasi Pembayaran pendaftaran.
+      <strong>Berhasil!</strong> Konfirmasi Pembayaran SPP.
     </div>";
 }
 ?>
@@ -32,7 +32,12 @@ if (isset($_SESSION['message'])) {
 					</thead>
 				    <tbody>
 				    	<?php  
-				    		$query 	= "SELECT a.Id,a.cicilan_ke, a.status_cicilan, c.email, d.nama,b.Id idd FROM cicilan_pendaftaran a , detail_pendaftaran b, akun c, pendaftaran d WHERE a.id_detail_pendaftaran = b.Id AND a.status_cicilan = 0 AND c.id_user = d.Id AND b.id_user = d.Id ";
+				    		$query 	= "SELECT a.Id,a.cicilan_ke, a.status_spp, c.email, d.nama,b.Id idd, d.Id id_pen 
+										FROM pembayaran_spp a , detail_pendaftaran b, akun c, pendaftaran d 
+										WHERE a.user_id = d.Id 
+										AND a.status_spp = 0 
+										AND c.id_user = d.Id 
+										AND b.id_user = d.Id ";
 
 				    		$exec 	=	mysqli_query($conn, $query);
 
@@ -59,7 +64,7 @@ if (isset($_SESSION['message'])) {
 										?></td>
 										<td>
 											<!-- <a href="" class="btn btn-primary btn-sm">Konfirmasi</a> -->
-											<a href="include/proses_konfirmasi_cicilan_pendaftaran.php?id=<?php echo $rows['Id'] ?>&&idd=<?php echo $rows['idd'] ?>" class="btn btn-warning btn-sm">Konfirmasi</a>
+											<a href="include/proses_konfirmasi_pembayaran_spp.php?id=<?php echo $rows['Id'] ?>&&idd=<?php echo $rows['id_pen'] ?>" class="btn btn-warning btn-sm">Konfirmasi</a>
 										</td>
 									</tr>
 

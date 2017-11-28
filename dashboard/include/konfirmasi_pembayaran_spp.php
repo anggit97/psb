@@ -79,6 +79,7 @@ if (isset($_POST['upload'])) {
 }
 ?>
 
+<a href="index.php?page=14" class="btn btn-primary btn-md pull-right"><i class="fa fa-arrow-left"></i> Kembali</a>
 
 <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-10 col-lg-offset-1">

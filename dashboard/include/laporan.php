@@ -21,7 +21,7 @@
 			</div>
 
 			<div class="row">
-				<center><a href="" class="btn btn-primary"><i class="fa fa-print"></i> Cetak Laporan Daftar Ulang</a></center>
+				<center><a href="include/cetak_laporan_kegiatan.php" class="btn btn-primary"><i class="fa fa-print"></i> Cetak Laporan Kegiatan</a></center>
 			</div>
 			
           

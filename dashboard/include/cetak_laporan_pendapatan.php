@@ -41,15 +41,24 @@ $pdf->SetWidths(array(10,40,50,40,20,30));
 $count 	=	0;
 
 while ($rows = mysqli_fetch_array($exec)) {
-  $pdf->Row(array(++$no,$rows['nama'],$rows['email'],$rows['tanggal_pembayaran'],$rows['cicilan_ke'],'Rp.'.$rows['nom']));
+  $pdf->Row(array(++$no,$rows['nama'],$rows['email'],$rows['tanggal_pembayaran'],$rows['cicilan_ke'],'Rp. '.thousandSparator($rows['nom'])));
   $count+=$rows['nom'];
 }
 
 $pdf->Ln(0);
 $pdf->Cell(160,10,'Total',1,0,'C');
-$pdf->Cell(30,10,'Rp.'.$count,1,1,'L');
+$pdf->Cell(30,10,'Rp. '.thousandSparator($count),1,1,'L');
 
 
 $pdf->Output();
+
+
+
+function thousandSparator($number){
+	$example = $number;
+	$subtotal =  number_format($number, 2, ',', '.');
+	return $subtotal;
+}
+
 
 ?>

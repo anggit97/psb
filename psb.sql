@@ -1,5 +1,5 @@
 # Host: localhost  (Version 5.6.21)
-# Date: 2017-11-27 15:32:23
+# Date: 2017-12-08 15:25:24
 # Generator: MySQL-Front 5.3  (Build 5.39)
 
 /*!40101 SET NAMES latin1 */;
@@ -113,13 +113,13 @@ CREATE TABLE `pembayaran_spp` (
   `status_spp` int(11) DEFAULT NULL,
   `user_id` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "pembayaran_spp"
 #
 
-INSERT INTO `pembayaran_spp` VALUES (1,'2017-11-25',1,1,'3'),(5,'2017-11-26',1,1,'4'),(6,'2017-11-27',2,0,'3');
+INSERT INTO `pembayaran_spp` VALUES (1,'2017-11-25',1,1,'3'),(5,'2017-11-26',1,1,'4'),(6,'2017-11-27',2,1,'3'),(7,'2017-11-27',1,1,'5'),(8,'2017-11-27',2,1,'5'),(9,'2017-12-08',3,1,'3'),(10,'2017-12-08',1,1,'6'),(11,'2017-12-08',2,1,'6');
 
 #
 # Structure for table "pendaftaran"
@@ -154,13 +154,13 @@ CREATE TABLE `pendaftaran` (
   `foto_anak` varchar(255) DEFAULT NULL,
   `foto_keluarga` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "pendaftaran"
 #
 
-INSERT INTO `pendaftaran` VALUES (3,'Anggit Prayogo','Anggit','Tangerang','2009-01-01','L',2,2,'Orang tua','Sokhibun Wahid','Tangerang','1980-01-01','SMA','Karyawan Swasta','Islam','Sugiyati','Tangerang','1980-01-01','S1','Ibu Rumah Tangga','Islam','+6287812035533','01-11-10Home.png','01-11-10drawerBackground.jpg','01-11-21JuraganSeminar 2.pdf','01-11-21Home.png'),(4,'Ayah User','User','Tangerang','2014-01-01','L',2,2,'Orang tua','Ayag','Tangerang','1980-01-01','SMA','Karyawan Swasta','Islam','Ibu','Tangerang','1980-01-01','SMA','Ibu Rumah Tangga','Islam','+6287812035533','12-11-26drawerBackground.jpg','12-11-26JuraganSeminar 2.pdf','12-11-34Home.png','12-11-34man.png');
+INSERT INTO `pendaftaran` VALUES (3,'Anggit Prayogo','Anggit','Tangerang','2009-01-01','L',2,2,'Orang tua','Sokhibun Wahid','Tangerang','1980-01-01','SMA','Karyawan Swasta','Islam','Sugiyati','Tangerang','1980-01-01','S1','Ibu Rumah Tangga','Islam','+6287812035533','01-11-10Home.png','01-11-10drawerBackground.jpg','01-11-21JuraganSeminar 2.pdf','01-11-21Home.png'),(4,'Ayah User','User','Tangerang','2014-01-01','L',2,2,'Orang tua','Ayag','Tangerang','1980-01-01','SMA','Karyawan Swasta','Islam','Ibu','Tangerang','1980-01-01','SMA','Ibu Rumah Tangga','Islam','+6287812035533','12-11-26drawerBackground.jpg','12-11-26JuraganSeminar 2.pdf','12-11-34Home.png','12-11-34man.png'),(5,'mulky yusuf','mulky','JAKARTA','2009-01-01','L',1,3,'orangtua','muhajar','jakarta','1980-01-01','slta','buruh','islam','ika','jakarta','1980-01-01','slta','rumah tangga','islam','123456','09-11-32man.png','09-11-32man.png','09-11-32man.png','09-11-32man.png'),(6,'ibnu','ibnu','Tangerang','2008-09-22','L',1,2,'wali','hardi','Tangerang','1980-01-02','S1','Programer','Islam','Rosdiaya lukita sari','Tangerang','2017-12-08','D3','bidan','islam','0838987382','09-12-07GaluhTvPrambanan.pdf','09-12-07GaluhTvPrambanan.pdf','09-12-35GaluhTvPrambanan.pdf','09-12-35GaluhTvPrambanan.pdf');
 
 #
 # Structure for table "akun"
@@ -178,13 +178,13 @@ CREATE TABLE `akun` (
   KEY `id_user` (`id_user`),
   KEY `id_user_2` (`id_user`),
   CONSTRAINT `akun_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `pendaftaran` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "akun"
 #
 
-INSERT INTO `akun` VALUES (2,'admin@gmail.com','$2y$10$AIxith3klXwMIMT/t3CpHOasClDF8l1JWV66U1zob78mXT4wksaJq','Riyan','0',NULL),(14,'anggitprayogo@gmail.com','$2y$10$eAq9DcArI4NGXe.fdm.HBujEha8Ui3.HqQObO5MlaAlqGKtFMU9PS','','1',3),(15,'user@gmail.com','$2y$10$OaYWI48pkw8MwXcj4yz5AOj9OweYOZrh3/jMeXLjoTWdiR6SWSKdq','','1',4);
+INSERT INTO `akun` VALUES (2,'admin@gmail.com','$2y$10$AIxith3klXwMIMT/t3CpHOasClDF8l1JWV66U1zob78mXT4wksaJq','Riyan','0',NULL),(14,'anggitprayogo@gmail.com','$2y$10$eAq9DcArI4NGXe.fdm.HBujEha8Ui3.HqQObO5MlaAlqGKtFMU9PS','','1',3),(15,'user@gmail.com','$2y$10$OaYWI48pkw8MwXcj4yz5AOj9OweYOZrh3/jMeXLjoTWdiR6SWSKdq','','1',4),(16,'mulkyyusuf@gmail.com','$2y$10$td3bdKIzzobriXHI4omdTOSbBekcXdgGMg8.oe.LxfhnVbutgBiSm','','1',5),(17,'ibnuhardiyatna@gmail.com','$2y$10$xpzv8eV8uYynSNNpmKY9OO9ofm4ol.RYBPxVQH2/.HVtC67SFYkZ6','','1',6);
 
 #
 # Structure for table "detail_pendaftaran"
@@ -200,18 +200,22 @@ CREATE TABLE `detail_pendaftaran` (
   `kelas` varchar(255) DEFAULT NULL,
   `usia` varchar(255) DEFAULT NULL,
   `status_pendaftaran` varchar(255) DEFAULT NULL,
+  `status_kegiatan` int(11) NOT NULL DEFAULT '0',
+  `biaya_kegiatan` int(11) DEFAULT '0',
+  `tanggal_kegiatan` date DEFAULT NULL,
+  `bukti_konfirmasi_pembayaran_kegiatan` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`),
   KEY `id_user` (`id_user`),
   KEY `id_admin` (`id_admin`),
   CONSTRAINT `detail_pendaftaran_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `pendaftaran` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `detail_pendaftaran_ibfk_2` FOREIGN KEY (`id_admin`) REFERENCES `akun` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "detail_pendaftaran"
 #
 
-INSERT INTO `detail_pendaftaran` VALUES (2,3,2,'2017-11-25','L','B','8 tahun 10 bulan','4'),(3,4,2,'2017-11-26','C','A','3 tahun 10 bulan','3');
+INSERT INTO `detail_pendaftaran` VALUES (2,3,2,'2017-11-25','L','B','8 tahun 10 bulan','4',1,500000,'2017-12-08','09-12-28GaluhTvPrambanan.pdf'),(3,4,2,'2017-11-26','C','A','3 tahun 10 bulan','4',0,0,NULL,NULL),(4,5,2,'2017-11-27','L','B','8 tahun 10 bulan','4',0,0,NULL,NULL),(5,6,2,'2017-12-08','L','A','9 tahun 2 bulan','4',1,500000,'2017-12-08','09-12-00GaluhTvPrambanan.pdf');
 
 #
 # Structure for table "cicilan_pendaftaran"
@@ -229,13 +233,13 @@ CREATE TABLE `cicilan_pendaftaran` (
   PRIMARY KEY (`Id`),
   KEY `id_detail_pendaftaran` (`id_detail_pendaftaran`),
   CONSTRAINT `cicilan_pendaftaran_ibfk_1` FOREIGN KEY (`id_detail_pendaftaran`) REFERENCES `detail_pendaftaran` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "cicilan_pendaftaran"
 #
 
-INSERT INTO `cicilan_pendaftaran` VALUES (1,'01-11-25Home.png',2,895000,'2017-11-25',1,1),(7,'01-11-58drawerBackground.jpg',3,440000,'2017-11-26',1,1);
+INSERT INTO `cicilan_pendaftaran` VALUES (1,'01-11-25Home.png',2,895000,'2017-11-25',1,1),(7,'01-11-58drawerBackground.jpg',3,440000,'2017-11-26',1,1),(8,'10-11-01man.png',4,895000,'2017-11-27',1,1),(9,'02-11-20327.jpg',3,440000,'2017-11-27',1,2),(10,'09-12-11GaluhTvPrambanan.pdf',5,880000,'2017-12-08',1,1);
 
 #
 # Structure for table "siswa"

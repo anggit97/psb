@@ -155,6 +155,9 @@ $metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
                     ?>
                         
                         <li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a></li>
+                        
+
+                        <li><a href="index.php?page=27" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran Kegiatan</a></li>
 
                     <?php
                     }else{

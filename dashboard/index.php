@@ -150,6 +150,14 @@ switch ($getPage) {
         $page               = "include/konfirmasi_pembayaran_spp_admin.php";
         $_SESSION['active'] = "13";
         break;
+    case 26:
+        $page               = "include/konfirmasi_pembayaran_kegiatan_admin.php";
+        $_SESSION['active'] = "14";
+        break;
+    case 27:
+        $page               = "include/konfirmasi_pembayaran_kegiatan.php";
+        $_SESSION['active'] = "7";
+        break;
 	default:
 		$page 	= "include/home.php";
 		$_SESSION['active']	= "1";
@@ -234,6 +242,12 @@ switch ($getPage) {
                             <p>Konfirmasi Pembayaran SPP</p>
                         </a>
                     </li>
+                    <li class="<?php $_SESSION['active'] == 14 ? print("active") : print("") ?>">
+                        <a href="index.php?page=26">
+                            <i class="material-icons">subject</i>
+                            <p>Konfirmasi Pembayaran Kegiatan</p>
+                        </a>
+                    </li>
                     <li class="<?php $_SESSION['active'] == 9 ? print("active") : print("") ?>">
                         <a href="index.php?page=18">
                             <i class="material-icons">subject</i>
@@ -246,6 +260,7 @@ switch ($getPage) {
                             <p>Mata Pelajaran</p>
                         </a>
                     </li>
+
                     <li class="<?php $_SESSION['active'] == 11 ? print("active") : print("") ?>">
                         <a href="index.php?page=22">
                             <i class="material-icons">subject</i>

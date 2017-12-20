@@ -130,8 +130,42 @@ $metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
                         
 
                     ?>
+                      
+
+
+                    <?php  
+
+                    $querySPP   =   "SELECT COUNT(cicilan_ke) as countSpp FROM pembayaran_spp WHERE user_id=$id AND status_spp=1";
+                    $exacSPP    =   mysqli_query($conn, $querySPP);
+
+                    if ($exacSPP) {
+                        $countSPP   =   mysqli_fetch_array($exacSPP);
+                        $countSpp   =   $countSPP['countSpp'];
                         
-                        <li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a></li>
+
+                        if ($countSpp >= 6) {
+                            echo '<li><a href="#" class="btn btn-warning btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP (SUDAH LUNAS)</a><i class="fa fa-check"></i></li>';
+                        }else{
+                            $queryStatus    =   "SELECT * FROM pembayaran_spp WHERE user_id=$id AND status_spp=0";
+                            $exacStatus     =   mysqli_query($conn, $queryStatus);
+
+                            if ($exacStatus) {
+                                $null   =    mysqli_num_rows($exacStatus);
+
+                                if ($null > 0) {
+                                    echo '<li><a href="#" class="btn btn-warning btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a> (Sedang dikonfirmasi admin)</li>';
+                                }else{
+                                    echo '<li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a> (CICILAN KE -'.$countSpp.')</li>';
+                                }
+                            }else echo 'tidak ada';
+                        }
+
+                    }else {
+                        echo '<li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a></li>';
+                    }
+                    ?>   
+
+
         			
                     <?php
         			}else if($daftar['status_pendaftaran'] == 4){
@@ -153,8 +187,41 @@ $metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
                         
 
                     ?>
+
+
+                    <?php  
+
+                    $querySPP   =   "SELECT COUNT(cicilan_ke) as countSpp FROM pembayaran_spp WHERE user_id=$id AND status_spp=1";
+                    $exacSPP    =   mysqli_query($conn, $querySPP);
+
+                    if ($exacSPP) {
+                        $countSPP   =   mysqli_fetch_array($exacSPP);
+                        $countSpp   =   $countSPP['countSpp'];
                         
-                        <li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a></li>
+                        if ($countSpp >= 6) {
+                            echo '<li><a href="#" class="btn btn-warning btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP (SUDAH LUNAS)</a><i class="fa fa-check"></i></li>';
+                        }else{
+                            
+                            $queryStatus    =   "SELECT * FROM pembayaran_spp WHERE user_id=$id AND status_spp=0";
+                            $exacStatus     =   mysqli_query($conn, $queryStatus);
+
+                            if ($exacStatus) {
+                                $null   =    mysqli_num_rows($exacStatus);
+
+                                if ($null > 0) {
+                                    echo '<li><a href="#" class="btn btn-warning btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a> (Sedang dikonfirmasi admin)</li>';
+                                }else{
+                                    echo '<li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a> (CICILAN KE -'.$countSpp.')</li>';
+                                }
+                            }else echo 'tidak ada';
+
+                        }
+
+                    }else {
+                        echo '<li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a></li>';
+                    }
+                    ?>   
+                        
                             
                         
                     <?php  
@@ -171,7 +238,9 @@ $metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
                             if ($kegiatan['status_kegiatan'] == 0) {
                                 echo '<li><a href="#" class="btn btn-warning btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran Kegiatan (Sedang dikofirmasi)</a></li>';
                             }else{
-                                echo '<li><a href="#" class="btn btn-warning btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran Kegiatan (LUNAS)</a><i class="fa fa-check"></i></li>';
+                                echo '<li><a href="#" class="btn btn-warning btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran Kegiatan (LUNAS)</a><i class="fa fa-check"></i> 
+                                    <a href="" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> Cetak Bukti Pembayaran Kegiatan</a>
+                                </li>';
                             }
 
                         }else{

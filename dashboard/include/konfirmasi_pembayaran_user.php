@@ -155,9 +155,37 @@ $metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
                     ?>
                         
                         <li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a></li>
+                            
                         
+                    <?php  
 
-                        <li><a href="index.php?page=27" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran Kegiatan</a></li>
+                    $queryKegiatan  =   "SELECT a.* FROM detail_pendaftaran a, pendaftaran b WHERE a.id_user=$id";
+                    $exacKegiatan            =   mysqli_query($conn, $queryKegiatan);
+
+                    if ($exacKegiatan) {
+                        
+                        $kegiatan   =   mysqli_fetch_array($exacKegiatan);
+
+                        if ($kegiatan['bukti_konfirmasi_pembayaran_kegiatan'] != null) {
+                            
+                            if ($kegiatan['status_kegiatan'] == 0) {
+                                echo '<li><a href="#" class="btn btn-warning btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran Kegiatan (Sedang dikofirmasi)</a></li>';
+                            }else{
+                                echo '<li><a href="#" class="btn btn-warning btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran Kegiatan (LUNAS)</a><i class="fa fa-check"></i></li>';
+                            }
+
+                        }else{
+                            echo '<li><a href="index.php?page=27" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran Kegiatan</a></li>';
+                        }
+
+                    }else{
+
+                    }
+
+                    ?>
+
+
+                        
 
                     <?php
                     }else{

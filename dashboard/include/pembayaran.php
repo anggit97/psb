@@ -111,7 +111,7 @@ if($execx){
                   <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
                   <strong>Persyaratan sudah lengkap. tunggu konfirmasi admin paling lambat 2 hari kerja</strong> 
                 </div>";
-            }else if ($daftar['status_pendaftara'] == 4){
+            }else if ($daftar['status_pendaftaran'] == 4){
 			    echo "<div class='alert alert-warning alert-dismissable'>
 			      <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
 			      <strong>Pembayaran Pendaftaran sudah Lunas</strong>

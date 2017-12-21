@@ -232,6 +232,7 @@ $metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
                     if ($exacKegiatan) {
                         
                         $kegiatan   =   mysqli_fetch_array($exacKegiatan);
+                        $id_detail  =   $kegiatan['Id'];
 
                         if ($kegiatan['bukti_konfirmasi_pembayaran_kegiatan'] != null) {
                             
@@ -239,7 +240,7 @@ $metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
                                 echo '<li><a href="#" class="btn btn-warning btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran Kegiatan (Sedang dikofirmasi)</a></li>';
                             }else{
                                 echo '<li><a href="#" class="btn btn-warning btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran Kegiatan (LUNAS)</a><i class="fa fa-check"></i> 
-                                    <a href="" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> Cetak Bukti Pembayaran Kegiatan</a>
+                                    <a href="include/cetak_bukti_pembayaran_kegiatan.php?id='.$id_detail.'" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> Cetak Bukti Pembayaran Kegiatan</a>
                                 </li>';
                             }
 

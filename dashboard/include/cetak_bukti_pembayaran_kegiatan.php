@@ -33,9 +33,11 @@ if ($exec) {
 	   	$biaya_kegiatan 	=	$rows['biaya_kegiatan'];
 	}
 
+
 }else{
 	echo 'gagal';
 }
+
 
 $date =	date("Y-m-d");
 

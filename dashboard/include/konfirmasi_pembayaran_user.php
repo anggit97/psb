@@ -98,22 +98,23 @@ $metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
         			}else if($daftar['status_pendaftaran'] == 3){
         			     
                          if ($kelas == 'A') {
-                             if ($nom >= 880000) {
+                            if ($nom >= 880000) {
                                 if ($lastStatus == 0) {
                                     echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran</a> (Sedang dikonfirmasi Admin)</li> ';
                                 }else{
                                     echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
                                 }
                             }else{
-                                if ($nom >= 890000) {
-                                    if ($lastStatus == 0) {
-                                        echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran</a>(Sedang dikonfirmasi Admin)</li> ';
-                                    }else{
-                                        echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
-                                    }
-                                }else{
-                                    echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
-                                }
+                                // if ($nom >= 890000) {
+                                //     if ($lastStatus == 0) {
+                                //         echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran</a>(Sedang dikonfirmasi Admin)</li> ';
+                                //     }else{
+                                //         echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
+                                //     }
+                                // }else{
+                                //     echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                                // }
+                                echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
                             }
                          }else{
                             if ($nom >= 890000) {
@@ -123,7 +124,7 @@ $metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
                                     echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
                                 }
                             }else{
-                                echo '<li><a href="" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                                echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
                             }
                          }
                          
@@ -155,7 +156,7 @@ $metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
                                 if ($null > 0) {
                                     echo '<li><a href="#" class="btn btn-warning btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a> (Sedang dikonfirmasi admin)</li>';
                                 }else{
-                                    echo '<li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a> (CICILAN KE -'.$countSpp.')</li>';
+                                    echo '<li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a> (Pembayaran bulan ke -'.$countSpp.')</li>';
                                 }
                             }else echo 'tidak ada';
                         }
@@ -211,7 +212,7 @@ $metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
                                 if ($null > 0) {
                                     echo '<li><a href="#" class="btn btn-warning btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a> (Sedang dikonfirmasi admin)</li>';
                                 }else{
-                                    echo '<li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a> (CICILAN KE -'.$countSpp.')</li>';
+                                    echo '<li><a href="index.php?page=16" class="btn btn-primary btn-lg" title="Lakukan pembayaran pendaftaran terlebih dahulu">Konfirmasi pembayaran SPP</a> (Pembayaran bulan ke -'.++$countSpp.')</li>';
                                 }
                             }else echo 'tidak ada';
 

@@ -27,7 +27,7 @@ $pdf->Cell(40,10,'Tanggal Pembayaran',1,0,'C');
 $pdf->Cell(20,10,'Cicilan Ke-',1,0,'C');
 $pdf->Cell(30,10,'Earn',1,1,'C');
 
-$query	=	"SELECT a.nama,b.email, d.nominal as nom, d.tanggal_pembayaran, d.cicilan_ke 
+$query	=	"SELECT a.nama,b.email, d.nominal as nom, d.tanggal_pembayaran, d.cicilan_ke, c.metode_pembayaran_pendaftaran as metode_pembayaran
 			FROM pendaftaran a, akun b, detail_pendaftaran c, cicilan_pendaftaran d 
 			WHERE a.Id = c.id_user 
 			AND b.id_user = a.Id
@@ -41,7 +41,15 @@ $pdf->SetWidths(array(10,40,50,40,20,30));
 $count 	=	0;
 
 while ($rows = mysqli_fetch_array($exec)) {
-  $pdf->Row(array(++$no,$rows['nama'],$rows['email'],$rows['tanggal_pembayaran'],$rows['cicilan_ke'],'Rp. '.thousandSparator($rows['nom'])));
+
+  $mp 	=	$rows['metode_pembayaran'];
+  $cicilan = "";
+  if ($mp == "C") {
+  	$cicilan = $rows['cicilan_ke'];
+  }else{
+  	$cicilan = "LUNAS";
+  }
+  $pdf->Row(array(++$no,$rows['nama'],$rows['email'],$rows['tanggal_pembayaran'],$cicilan,'Rp. '.thousandSparator($rows['nom'])));
   $count+=$rows['nom'];
 }
 

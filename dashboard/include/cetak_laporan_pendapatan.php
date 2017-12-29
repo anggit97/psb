@@ -39,16 +39,22 @@ $no = 0;
 $pdf->SetWidths(array(10,40,50,40,20,30));
 
 $count 	=	0;
+$tmp_id = "";
+$count = 0;
 
 while ($rows = mysqli_fetch_array($exec)) {
 
   $mp 	=	$rows['metode_pembayaran'];
-  $cicilan = "";
+ 
   if ($mp == "C") {
   	$cicilan = $rows['cicilan_ke'];
+    if ($cicilan == 2) {
+      $cicilan = "LUNAS";
+    }
   }else{
   	$cicilan = "LUNAS";
   }
+
   $pdf->Row(array(++$no,$rows['nama'],$rows['email'],$rows['tanggal_pembayaran'],$cicilan,'Rp. '.thousandSparator($rows['nom'])));
   $count+=$rows['nom'];
 }

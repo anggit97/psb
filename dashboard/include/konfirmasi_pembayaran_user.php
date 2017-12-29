@@ -114,7 +114,11 @@ $metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
                                 // }else{
                                 //     echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
                                 // }
-                                echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                                if ($nom >= 500000 && $nom < 880000) {
+                                    echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi Pelunasan pendaftaran</a></li>';   
+                                }else{
+                                    echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                                }
                             }
                          }else{
                             if ($nom >= 890000) {
@@ -124,7 +128,11 @@ $metode_pembayaran  =   $daftar['metode_pembayaran_pendaftaran'];
                                     echo '<li><a href="" class="btn btn-warning btn-lg">Konfirmasi pembayaran pendaftaran (Lunas)</a><i class="fa fa-check"></i></li> ';
                                 }
                             }else{
-                                echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                                if ($nom >= 500000 && $nom < 890000) {
+                                    echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi Pelunasan pendaftaran</a></li>';   
+                                }else{
+                                    echo '<li><a href="index.php?page=15" class="btn btn-primary btn-lg">Konfirmasi pembayaran pendaftaran</a></li>';
+                                }
                             }
                          }
                          

@@ -1,9 +1,7 @@
 <?php  
 	ini_set ("display_errors", "1");
     error_reporting(E_ALL);
-    //start the session
-	session_start();
-
+    
     include 'koneksi/koneksi.php';
 
     $redirect = "";
@@ -16,7 +14,6 @@
 		//set all name attr and value to created variable
 		foreach ($_POST as $key => $val) {
 			${$key} = $val;
-			$_SESSION[''.$key.''] = $val;
 		}
 
         $query  =   "SELECT email FROM akun WHERE email='$email'";
@@ -31,8 +28,7 @@
                 $cost = 10;
                 $hash = password_hash($password,PASSWORD_BCRYPT,["cost" => $cost]);
 
-                $_SESSION['password'] = $hash;
-
+                
                 $queryInsert = "INSERT INTO akun VALUES(null, '$email', '$hash', '$nama', 0, null)";
                 $execQueryInsert = mysqli_query($conn,$queryInsert);
 
@@ -40,15 +36,10 @@
                 if ($execQueryInsert) {
                     echo 'bisa';
                     //check if session is not empty, then redirect to daftar_data_orangtua.php
-                    if (!empty($_SESSION)) {
-                        unset($_SESSION['email']);
-                        unset($_SESSION['password']);
-                        unset($_SESSION['kpass']);
-                        unset($_SESSION['nama']);
-                        echo '<script>alert("berhasil melakukan pendaftaran")</script>';
-                        echo "<script> window.location='login.php'</script>";
-                        print_r($_SESSION);
-                    }
+                                          
+                    echo '<script>alert("berhasil melakukan pendaftaran")</script>';
+                    echo "<script> window.location='login.php'</script>";
+                
                 }else{
                     echo 'ada';
                     echo mysqli_error($conn);
@@ -103,8 +94,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Email</label>
-                                        <input type="email" class="form-control" name="email" required autofocus
-                                        value="<?php isset($_SESSION['email'])  ?  print($_SESSION['email']) : ""; ?>">
+                                        <input type="email" class="form-control" name="email" required autofocus>
                                     </div>
                                 </div>
                             </div>
@@ -113,8 +103,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Nama Admin</label>
-                                        <input type="text" class="form-control" name="nama" required autofocus
-                                        value="<?php isset($_SESSION['nama'])  ?  print($_SESSION['nama']) : ""; ?>">
+                                        <input type="text" class="form-control" name="nama" required autofocus>
                                     </div>
                                 </div>
                             </div>
@@ -123,8 +112,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Password</label>
-                                        <input type="password" class="form-control" id="pass" name="password" required
-                                        value="<?php isset($_SESSION['password'])  ?  print($_SESSION['password']) : ""; ?>">
+                                        <input type="password" class="form-control" id="pass" name="password" required>
                                     </div>
                                 </div>
                             </div>
@@ -133,8 +121,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Konfirmasi Password</label>
-                                        <input type="password" class="form-control" id="kpass" name="konfirmasi_password" required
-                                        value="<?php isset($_SESSION['konfirmasi_password'])  ?  print($_SESSION['konfirmasi_password']) : ""; ?>">
+                                        <input type="password" class="form-control" id="kpass" name="konfirmasi_password" required>
                                         <font id="err" color="red">Konfirmasi Password tidak sama dengan password</font>
                                     </div>
                                 </div>
